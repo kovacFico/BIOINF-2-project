@@ -5,13 +5,9 @@
 
 using namespace std;
 
-/** 
- * @brief Jedna iteracija Baum-Welch algoritma za ažuriranje HMM parametara.
- * 
- * @param O Niz opažanja
- * @param hmm Referenca na HMM strukturu za ažuriranje parametara
- * @param ll Referenca za pohranu log-vjerojatnosti sekvenci
- *
- * @return double Ažurirana log-vjerojatnost sekvenci
-*/
-double baum_welch_iteration(const vector<int>& O, HMM& hmm, double& ll);
+double baum_welch_iteration_multi_masked(
+    const vector<vector<int>>& sequences,
+    const vector<vector<array<double, NSTATE>>>& state_masks,
+    HMM& hmm,
+    double& ll
+);

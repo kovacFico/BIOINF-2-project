@@ -1,4 +1,5 @@
-./bin/launcher
+ISPIS:
+./bin/launcher 
 === Detekcija CpG otoka pipeline ===
 
 [1/4] Pretprocesiranje
@@ -26,313 +27,303 @@ Duzina kromosoma 21: 27006922
 Duzina kromosoma 22: 28181743
 Broj pozitivnih CpG otoka: 30616
 Duzina originalnog kromosoma: 1751994926
-Duzina backgrounda nakon ciscenja: 1839207510
+Duzina backgrounda nakon ciscenja: 1729386315
 
 [2/4] Inicijalizacija HMM parametara
-Prosjecna duzina CpG otoka L_C: 843.614
-Prosjecna duzina background segmenta L_B: 158254
+Prosjecna duzina CpG otoka L_C: 803.334
+Prosjecna duzina background segmenta L_B: 87231.2
 Inicijalni HMM parametri spremljeni u init_hmm_params.txt
 
 [3/4] Treniranje HMM (Baum-Welch)
 
 --- Treniranje na kromosomu 1 ---
 Učitana sekvenca za kromosom 1 dužine 146521274
-Iter 0 logL = -2.00547e+08
-Iter 1 logL = -2.00487e+08
-Iter 2 logL = -2.00474e+08
-Iter 3 logL = -2.00468e+08
-Iter 4 logL = -2.00465e+08
-Iter 5 logL = -2.00464e+08
-Iter 6 logL = -2.00463e+08
-Iter 7 logL = -2.00463e+08
-Iter 8 logL = -2.00463e+08
-Iter 9 logL = -2.00463e+08
+Iter 0 logL = -3.98013e+08
+Iter 1 logL = -3.97976e+08
+Iter 2 logL = -3.97976e+08
+Iter 3 logL = -3.97976e+08
+Iter 4 logL = -3.97976e+08
+Iter 5 logL = -3.97976e+08
 
 --- Treniranje na kromosomu 2 ---
 Učitana sekvenca za kromosom 2 dužine 155428161
-Iter 0 logL = -2.12213e+08
-Iter 1 logL = -2.12203e+08
-Iter 2 logL = -2.12201e+08
-Iter 3 logL = -2.122e+08
-Iter 4 logL = -2.12199e+08
-Iter 5 logL = -2.12199e+08
-Iter 6 logL = -2.12199e+08
-Iter 7 logL = -2.12199e+08
-Iter 8 logL = -2.12199e+08
-Iter 9 logL = -2.12199e+08
+Iter 0 logL = -4.21443e+08
+Iter 1 logL = -4.21329e+08
+Iter 2 logL = -4.21329e+08
+Iter 3 logL = -4.21329e+08
+Iter 4 logL = -4.21329e+08
+Iter 5 logL = -4.21329e+08
+Iter 6 logL = -4.21329e+08
+Iter 7 logL = -4.21329e+08
 
 --- Treniranje na kromosomu 3 ---
 Učitana sekvenca za kromosom 3 dužine 125574383
-Iter 0 logL = -1.71262e+08
-Iter 1 logL = -1.71258e+08
-Iter 2 logL = -1.71257e+08
-Iter 3 logL = -1.71256e+08
-Iter 4 logL = -1.71256e+08
-Iter 5 logL = -1.71256e+08
-Iter 6 logL = -1.71256e+08
-Iter 7 logL = -1.71256e+08
-Iter 8 logL = -1.71256e+08
-Iter 9 logL = -1.71256e+08
+Iter 0 logL = -3.39862e+08
+Iter 1 logL = -3.39829e+08
+Iter 2 logL = -3.39829e+08
+Iter 3 logL = -3.39829e+08
+Iter 4 logL = -3.39829e+08
+Iter 5 logL = -3.39829e+08
+Iter 6 logL = -3.39829e+08
+Iter 7 logL = -3.39829e+08
 
 --- Treniranje na kromosomu 4 ---
 Učitana sekvenca za kromosom 4 dužine 117821552
-Iter 0 logL = -1.60113e+08
-Iter 1 logL = -1.60103e+08
-Iter 2 logL = -1.60103e+08
-Iter 3 logL = -1.60103e+08
-Iter 4 logL = -1.60103e+08
-Iter 5 logL = -1.60103e+08
-Iter 6 logL = -1.60103e+08
-Iter 7 logL = -1.60103e+08
-Iter 8 logL = -1.60103e+08
-Iter 9 logL = -1.60103e+08
+Iter 0 logL = -3.18002e+08
+Iter 1 logL = -3.17894e+08
+Iter 2 logL = -3.17894e+08
+Iter 3 logL = -3.17894e+08
+Iter 4 logL = -3.17894e+08
 
 --- Treniranje na kromosomu 5 ---
 Učitana sekvenca za kromosom 5 dužine 113040625
-Iter 0 logL = -1.54145e+08
-Iter 1 logL = -1.54138e+08
-Iter 2 logL = -1.54138e+08
-Iter 3 logL = -1.54138e+08
-Iter 4 logL = -1.54138e+08
-Iter 5 logL = -1.54137e+08
-Iter 6 logL = -1.54137e+08
-Iter 7 logL = -1.54137e+08
-Iter 8 logL = -1.54137e+08
-Iter 9 logL = -1.54137e+08
+Iter 0 logL = -3.06016e+08
+Iter 1 logL = -3.0592e+08
+Iter 2 logL = -3.0592e+08
+Iter 3 logL = -3.0592e+08
+Iter 4 logL = -3.0592e+08
 
 --- Treniranje na kromosomu 6 ---
 Učitana sekvenca za kromosom 6 dužine 107480608
-Iter 0 logL = -1.46571e+08
-Iter 1 logL = -1.46571e+08
-Iter 2 logL = -1.46571e+08
-Iter 3 logL = -1.46571e+08
-Iter 4 logL = -1.46571e+08
-Iter 5 logL = -1.46571e+08
-Iter 6 logL = -1.46571e+08
-Iter 7 logL = -1.46571e+08
-Iter 8 logL = -1.46571e+08
-Iter 9 logL = -1.46571e+08
+Iter 0 logL = -2.90929e+08
+Iter 1 logL = -2.90928e+08
+Iter 2 logL = -2.90928e+08
+Iter 3 logL = -2.90928e+08
+Iter 4 logL = -2.90928e+08
 
 --- Treniranje na kromosomu 7 ---
 Učitana sekvenca za kromosom 7 dužine 97898664
-Iter 0 logL = -1.33653e+08
-Iter 1 logL = -1.33642e+08
-Iter 2 logL = -1.33638e+08
-Iter 3 logL = -1.33637e+08
-Iter 4 logL = -1.33636e+08
-Iter 5 logL = -1.33636e+08
-Iter 6 logL = -1.33635e+08
-Iter 7 logL = -1.33635e+08
-Iter 8 logL = -1.33635e+08
-Iter 9 logL = -1.33635e+08
+Iter 0 logL = -2.65638e+08
+Iter 1 logL = -2.65592e+08
+Iter 2 logL = -2.65592e+08
+Iter 3 logL = -2.65592e+08
+Iter 4 logL = -2.65592e+08
+Iter 5 logL = -2.65592e+08
 
 --- Treniranje na kromosomu 8 ---
 Učitana sekvenca za kromosom 8 dužine 92937672
-Iter 0 logL = -1.26896e+08
-Iter 1 logL = -1.26894e+08
-Iter 2 logL = -1.26894e+08
-Iter 3 logL = -1.26894e+08
-Iter 4 logL = -1.26894e+08
-Iter 5 logL = -1.26894e+08
-Iter 6 logL = -1.26894e+08
-Iter 7 logL = -1.26894e+08
-Iter 8 logL = -1.26894e+08
-Iter 9 logL = -1.26894e+08
+Iter 0 logL = -2.51978e+08
+Iter 1 logL = -2.51974e+08
+Iter 2 logL = -2.51974e+08
+Iter 3 logL = -2.51974e+08
+Iter 4 logL = -2.51974e+08
 
 --- Treniranje na kromosomu 9 ---
 Učitana sekvenca za kromosom 9 dužine 78316323
-Iter 0 logL = -1.0707e+08
-Iter 1 logL = -1.07064e+08
-Iter 2 logL = -1.07061e+08
-Iter 3 logL = -1.0706e+08
-Iter 4 logL = -1.0706e+08
-Iter 5 logL = -1.0706e+08
-Iter 6 logL = -1.07059e+08
-Iter 7 logL = -1.07059e+08
-Iter 8 logL = -1.07059e+08
-Iter 9 logL = -1.07059e+08
+Iter 0 logL = -2.12803e+08
+Iter 1 logL = -2.12763e+08
+Iter 2 logL = -2.12763e+08
+Iter 3 logL = -2.12763e+08
+Iter 4 logL = -2.12763e+08
+Iter 5 logL = -2.12763e+08
 
 --- Treniranje na kromosomu 10 ---
 Učitana sekvenca za kromosom 10 dužine 84944913
-Iter 0 logL = -1.16246e+08
-Iter 1 logL = -1.16241e+08
-Iter 2 logL = -1.1624e+08
-Iter 3 logL = -1.16239e+08
-Iter 4 logL = -1.16239e+08
-Iter 5 logL = -1.16238e+08
-Iter 6 logL = -1.16238e+08
-Iter 7 logL = -1.16238e+08
-Iter 8 logL = -1.16238e+08
-Iter 9 logL = -1.16238e+08
+Iter 0 logL = -2.30816e+08
+Iter 1 logL = -2.30811e+08
+Iter 2 logL = -2.30811e+08
+Iter 3 logL = -2.30811e+08
+Iter 4 logL = -2.30811e+08
 
 --- Treniranje na kromosomu 11 ---
 Učitana sekvenca za kromosom 11 dužine 84884441
-Iter 0 logL = -1.16114e+08
-Iter 1 logL = -1.16112e+08
-Iter 2 logL = -1.16111e+08
-Iter 3 logL = -1.16111e+08
-Iter 4 logL = -1.16111e+08
-Iter 5 logL = -1.1611e+08
-Iter 6 logL = -1.1611e+08
-Iter 7 logL = -1.1611e+08
-Iter 8 logL = -1.1611e+08
-Iter 9 logL = -1.1611e+08
+Iter 0 logL = -2.30622e+08
+Iter 1 logL = -2.30617e+08
+Iter 2 logL = -2.30617e+08
+Iter 3 logL = -2.30617e+08
+Iter 4 logL = -2.30617e+08
+Iter 5 logL = -2.30617e+08
 
 --- Treniranje na kromosomu 12 ---
 Učitana sekvenca za kromosom 12 dužine 81408893
-Iter 0 logL = -1.11206e+08
-Iter 1 logL = -1.11202e+08
-Iter 2 logL = -1.11201e+08
-Iter 3 logL = -1.112e+08
-Iter 4 logL = -1.112e+08
-Iter 5 logL = -1.112e+08
-Iter 6 logL = -1.112e+08
-Iter 7 logL = -1.112e+08
-Iter 8 logL = -1.112e+08
-Iter 9 logL = -1.112e+08
+Iter 0 logL = -2.20839e+08
+Iter 1 logL = -2.20785e+08
+Iter 2 logL = -2.20785e+08
+Iter 3 logL = -2.20785e+08
+Iter 4 logL = -2.20785e+08
+Iter 5 logL = -2.20785e+08
+Iter 6 logL = -2.20785e+08
 
 --- Treniranje na kromosomu 13 ---
 Učitana sekvenca za kromosom 13 dužine 67719304
-Iter 0 logL = -9.20634e+07
-Iter 1 logL = -9.20399e+07
-Iter 2 logL = -9.20387e+07
-Iter 3 logL = -9.20382e+07
-Iter 4 logL = -9.2038e+07
-Iter 5 logL = -9.20378e+07
-Iter 6 logL = -9.20378e+07
-Iter 7 logL = -9.20378e+07
-Iter 8 logL = -9.20377e+07
-Iter 9 logL = -9.20377e+07
+Iter 0 logL = -1.8328e+08
+Iter 1 logL = -1.83153e+08
+Iter 2 logL = -1.83152e+08
+Iter 3 logL = -1.83152e+08
+Iter 4 logL = -1.83152e+08
+Iter 5 logL = -1.83152e+08
+Iter 6 logL = -1.83152e+08
+Iter 7 logL = -1.83152e+08
+Iter 8 logL = -1.83152e+08
+Iter 9 logL = -1.83152e+08
 
 --- Treniranje na kromosomu 14 ---
 Učitana sekvenca za kromosom 14 dužine 60241802
-Iter 0 logL = -8.2303e+07
-Iter 1 logL = -8.22868e+07
-Iter 2 logL = -8.22861e+07
-Iter 3 logL = -8.22858e+07
-Iter 4 logL = -8.22857e+07
-Iter 5 logL = -8.22856e+07
-Iter 6 logL = -8.22856e+07
-Iter 7 logL = -8.22856e+07
-Iter 8 logL = -8.22856e+07
-Iter 9 logL = -8.22856e+07
+Iter 0 logL = -1.6367e+08
+Iter 1 logL = -1.63526e+08
+Iter 2 logL = -1.63526e+08
+Iter 3 logL = -1.63526e+08
+Iter 4 logL = -1.63526e+08
+Iter 5 logL = -1.63526e+08
 
 --- Treniranje na kromosomu 15 ---
 Učitana sekvenca za kromosom 15 dužine 57528766
-Iter 0 logL = -7.87909e+07
-Iter 1 logL = -7.8785e+07
-Iter 2 logL = -7.87844e+07
-Iter 3 logL = -7.87841e+07
-Iter 4 logL = -7.8784e+07
-Iter 5 logL = -7.8784e+07
-Iter 6 logL = -7.87839e+07
-Iter 7 logL = -7.87839e+07
-Iter 8 logL = -7.87839e+07
-Iter 9 logL = -7.87839e+07
+Iter 0 logL = -1.56538e+08
+Iter 1 logL = -1.56491e+08
+Iter 2 logL = -1.56491e+08
+Iter 3 logL = -1.56491e+08
+Iter 4 logL = -1.56491e+08
+Iter 5 logL = -1.56491e+08
 
 --- Treniranje na kromosomu 16 ---
 Učitana sekvenca za kromosom 16 dužine 53158671
-Iter 0 logL = -7.2968e+07
-Iter 1 logL = -7.29601e+07
-Iter 2 logL = -7.29583e+07
-Iter 3 logL = -7.29574e+07
-Iter 4 logL = -7.2957e+07
-Iter 5 logL = -7.29568e+07
-Iter 6 logL = -7.29567e+07
-Iter 7 logL = -7.29566e+07
-Iter 8 logL = -7.29566e+07
-Iter 9 logL = -7.29566e+07
+Iter 0 logL = -1.45102e+08
+Iter 1 logL = -1.44987e+08
+Iter 2 logL = -1.44987e+08
+Iter 3 logL = -1.44987e+08
+Iter 4 logL = -1.44987e+08
+Iter 5 logL = -1.44987e+08
 
 [4/4] Dekodiranje i evaluacija
 
 --- Dekodiranje i evaluacija na kromosomu 17 ---
-Učitana sekvenca za kromosom 17 dužine 49880495
+Učitana sekvenca za kromosom 17 (baze=49880495, dinukleotidi=49880494)
+Window 0-5000000 (bp keep 1-4975001), islands=376
+Window 4950000-9950000 (bp keep 4975001-9925001), islands=73
+Window 9900000-14900000 (bp keep 9925001-14875001), islands=219
+Window 14850000-19850000 (bp keep 14875001-19825001), islands=137
+Window 19800000-24800000 (bp keep 19825001-24775001), islands=282
+Window 24750000-29750000 (bp keep 24775001-29725001), islands=290
+Window 29700000-34700000 (bp keep 29725001-34675001), islands=62
+Window 34650000-39650000 (bp keep 34675001-39625001), islands=111
+Window 39600000-44600000 (bp keep 39625001-44575001), islands=110
+Window 44550000-49550000 (bp keep 44575001-49525001), islands=430
+Window 49500000-49880494 (bp keep 49525001-49880495), islands=72
 === Island-based evaluation ===
-True Positive = 1275
-False Positive = 8953
-False Negative = 382
-Precision = 0.124658
-Recall = 0.769463
+True Positive = 1355
+False Positive = 807
+False Negative = 302
+Precision = 0.626735
+Recall = 0.817743
 === Base-pair evaluation ===
-True Positive = 1195061
-False Positive = 17112451
-False Negative = 140051
-Precision = 0.0652771
-Recall = 0.895102
+True Positive = 1115967
+False Positive = 679107
+False Negative = 219145
+Precision = 0.621683
+Recall = 0.83586
 
 --- Dekodiranje i evaluacija na kromosomu 18 ---
-Učitana sekvenca za kromosom 18 dužine 49580111
+Učitana sekvenca za kromosom 18 (baze=49580111, dinukleotidi=49580110)
+Window 0-5000000 (bp keep 1-4975001), islands=73
+Window 4950000-9950000 (bp keep 4975001-9925001), islands=114
+Window 9900000-14900000 (bp keep 9925001-14875001), islands=43
+Window 14850000-19850000 (bp keep 14875001-19825001), islands=38
+Window 19800000-24800000 (bp keep 19825001-24775001), islands=19
+Window 24750000-29750000 (bp keep 24775001-29725001), islands=88
+Window 29700000-34700000 (bp keep 29725001-34675001), islands=35
+Window 34650000-39650000 (bp keep 34675001-39625001), islands=48
+Window 39600000-44600000 (bp keep 39625001-44575001), islands=20
+Window 44550000-49550000 (bp keep 44575001-49525001), islands=287
+Window 49500000-49580110 (bp keep 49525001-49580111), islands=3
 === Island-based evaluation ===
-True Positive = 479
-False Positive = 6037
-False Negative = 55
-Precision = 0.0735114
-Recall = 0.897004
+True Positive = 475
+False Positive = 293
+False Negative = 59
+Precision = 0.61849
+Recall = 0.889513
 === Base-pair evaluation ===
-True Positive = 444474
-False Positive = 5420832
-False Negative = 29401
-Precision = 0.0757802
-Recall = 0.937956
+True Positive = 394238
+False Positive = 184102
+False Negative = 79637
+Precision = 0.681672
+Recall = 0.831945
 
 --- Dekodiranje i evaluacija na kromosomu 19 ---
-Učitana sekvenca za kromosom 19 dužine 31654092
+Učitana sekvenca za kromosom 19 (baze=31654092, dinukleotidi=31654091)
+Window 0-5000000 (bp keep 1-4975001), islands=735
+Window 4950000-9950000 (bp keep 4975001-9925001), islands=536
+Window 9900000-14900000 (bp keep 9925001-14875001), islands=187
+Window 14850000-19850000 (bp keep 14875001-19825001), islands=236
+Window 19800000-24800000 (bp keep 19825001-24775001), islands=436
+Window 24750000-29750000 (bp keep 24775001-29725001), islands=515
+Window 29700000-31654091 (bp keep 29725001-31654092), islands=176
 === Island-based evaluation ===
-True Positive = 1407
-False Positive = 6060
-False Negative = 1187
-Precision = 0.188429
-Recall = 0.542406
+True Positive = 1927
+False Positive = 894
+False Negative = 667
+Precision = 0.683091
+Recall = 0.742868
 === Base-pair evaluation ===
-True Positive = 1321570
-False Positive = 14804071
-False Negative = 388574
-Precision = 0.0819546
-Recall = 0.772783
+True Positive = 1391175
+False Positive = 1267695
+False Negative = 318969
+Precision = 0.52322
+Recall = 0.813484
 
 --- Dekodiranje i evaluacija na kromosomu 20 ---
-Učitana sekvenca za kromosom 20 dužine 40785511
+Učitana sekvenca za kromosom 20 (baze=40785511, dinukleotidi=40785510)
+Window 0-5000000 (bp keep 1-4975001), islands=131
+Window 4950000-9950000 (bp keep 4975001-9925001), islands=31
+Window 9900000-14900000 (bp keep 9925001-14875001), islands=71
+Window 14850000-19850000 (bp keep 14875001-19825001), islands=192
+Window 19800000-24800000 (bp keep 19825001-24775001), islands=127
+Window 24750000-29750000 (bp keep 24775001-29725001), islands=115
+Window 29700000-34700000 (bp keep 29725001-34675001), islands=85
+Window 34650000-39650000 (bp keep 34675001-39625001), islands=164
+Window 39600000-40785510 (bp keep 39625001-40785511), islands=138
 === Island-based evaluation ===
-True Positive = 648
-False Positive = 8061
-False Negative = 221
-Precision = 0.0744058
-Recall = 0.745685
+True Positive = 667
+False Positive = 387
+False Negative = 202
+Precision = 0.632827
+Recall = 0.767549
 === Base-pair evaluation ===
-True Positive = 599105
-False Positive = 11083851
-False Negative = 58298
-Precision = 0.0512803
-Recall = 0.911321
+True Positive = 534215
+False Positive = 331537
+False Negative = 123188
+Precision = 0.617053
+Recall = 0.812614
 
 --- Dekodiranje i evaluacija na kromosomu 21 ---
-Učitana sekvenca za kromosom 21 dužine 27006922
+Učitana sekvenca za kromosom 21 (baze=27006922, dinukleotidi=27006921)
+Window 0-5000000 (bp keep 1-4975001), islands=1011
+Window 4950000-9950000 (bp keep 4975001-9925001), islands=34
+Window 9900000-14900000 (bp keep 9925001-14875001), islands=20
+Window 14850000-19850000 (bp keep 14875001-19825001), islands=79
+Window 19800000-24800000 (bp keep 19825001-24775001), islands=151
+Window 24750000-27006921 (bp keep 24775001-27006922), islands=206
 === Island-based evaluation ===
-True Positive = 595
-False Positive = 3284
-False Negative = 269
-Precision = 0.15339
-Recall = 0.688657
+True Positive = 685
+False Positive = 816
+False Negative = 179
+Precision = 0.456362
+Recall = 0.792824
 === Base-pair evaluation ===
-True Positive = 960151
-False Positive = 5210271
-False Negative = 142476
-Precision = 0.155605
-Recall = 0.870785
+True Positive = 842292
+False Positive = 640229
+False Negative = 260335
+Precision = 0.568148
+Recall = 0.763896
 
 --- Dekodiranje i evaluacija na kromosomu 22 ---
-Učitana sekvenca za kromosom 22 dužine 28181743
+Učitana sekvenca za kromosom 22 (baze=28181743, dinukleotidi=28181742)
+Window 0-5000000 (bp keep 1-4975001), islands=588
+Window 4950000-9950000 (bp keep 4975001-9925001), islands=204
+Window 9900000-14900000 (bp keep 9925001-14875001), islands=131
+Window 14850000-19850000 (bp keep 14875001-19825001), islands=126
+Window 19800000-24800000 (bp keep 19825001-24775001), islands=210
+Window 24750000-28181742 (bp keep 24775001-28181743), islands=209
 === Island-based evaluation ===
-True Positive = 764
-False Positive = 5606
-False Negative = 250
-Precision = 0.119937
-Recall = 0.753452
+True Positive = 795
+False Positive = 673
+False Negative = 219
+Precision = 0.541553
+Recall = 0.784024
 === Base-pair evaluation ===
-True Positive = 837845
-False Positive = 11878624
-False Negative = 104099
-Precision = 0.0658866
-Recall = 0.889485
+True Positive = 749882
+False Positive = 660534
+False Negative = 192062
+Precision = 0.531674
+Recall = 0.7961
 
 === Pipeline finished successfully ===

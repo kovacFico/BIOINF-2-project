@@ -33,8 +33,9 @@ string load_background(const string &filename) {
 }
 
 
-vector<CpgRegion> load_coords(const string &filename) {
+vector<CpgRegion> load_all_or_selected_coords(int chromosome) {
     vector<CpgRegion> coords;
+    string filename = "../output/coords.txt";
     ifstream file(filename);
     if (!file) {
         cerr << "Ne mogu otvoriti coords fajl: " << filename << endl;
@@ -43,51 +44,62 @@ vector<CpgRegion> load_coords(const string &filename) {
 
     int chr, s, e;
     while (file >> chr >> s >> e) {
-        coords.push_back({s, e});
+        if (chromosome == 0 || chr == chromosome) {
+            coords.push_back({s, e, chr});
+        }
     }
+
     return coords;
 }
 
 
-void compute_emission_pos(const vector<string> &seqs, double emit[4]) {
-    long long cntA = 0, cntC = 0, cntG = 0, cntT = 0;
+void compute_emission_pos(const vector<string> &seqs, double emit[NSYM]) {
+    long long counts[NSYM] = {0};
 
-    for (auto &s : seqs) {
-        for (char b : s) {
-            switch (b) {
-                case 'A': cntA++; break;
-                case 'C': cntC++; break;
-                case 'G': cntG++; break;
-                case 'T': cntT++; break;
-            }
+    for (const auto &s : seqs) {
+        if ((int)s.size() < 2) continue;
+
+        for (int i = 1; i < (int)s.size(); i++) {
+            int idx = di_index(s[i - 1], s[i]);
+            if (idx != -1) counts[idx]++;
         }
     }
 
-    double total = cntA + cntC + cntG + cntT;
-    emit[0] = cntA / total;
-    emit[1] = cntC / total;
-    emit[2] = cntG / total;
-    emit[3] = cntT / total;
+    long long total = 0;
+    for (int k = 0; k < NSYM; k++) total += counts[k];
+
+    if (total == 0) {
+        // fallback: uniformno ako nema validnih parova
+        for (int k = 0; k < NSYM; k++) emit[k] = 1.0 / NSYM;
+        return;
+    }
+
+    for (int k = 0; k < NSYM; k++)
+        emit[k] = counts[k] / (double)total;
 }
 
 
-void compute_emission_bg(const string &bg, double emit[4]) {
-    long long cntA = 0, cntC = 0, cntG = 0, cntT = 0;
 
-    for (char b : bg) {
-        switch (b) {
-            case 'A': cntA++; break;
-            case 'C': cntC++; break;
-            case 'G': cntG++; break;
-            case 'T': cntT++; break;
+void compute_emission_bg(const string &bg, double emit[NSYM]) {
+    long long counts[NSYM] = {0};
+
+    if ((int)bg.size() >= 2) {
+        for (int i = 1; i < (int)bg.size(); i++) {
+            int idx = di_index(bg[i - 1], bg[i]);
+            if (idx != -1) counts[idx]++;
         }
     }
 
-    double total = cntA + cntC + cntG + cntT;
-    emit[0] = cntA / total;
-    emit[1] = cntC / total;
-    emit[2] = cntG / total;
-    emit[3] = cntT / total;
+    long long total = 0;
+    for (int k = 0; k < NSYM; k++) total += counts[k];
+
+    if (total == 0) {
+        for (int k = 0; k < NSYM; k++) emit[k] = 1.0 / NSYM;
+        return;
+    }
+
+    for (int k = 0; k < NSYM; k++)
+        emit[k] = counts[k] / (double)total;
 }
 
 
@@ -104,7 +116,7 @@ void compute_transition_probabilities(
 
     double L_C = sum_C / coords.size();
 
-    // --- 2. Prosječna dužina background segmenta ---
+    // --- 2. Prosječna dužina kromosom segmenta ---
     double sum_B = 0;
     int num_B_segments = 0;
 
@@ -130,7 +142,7 @@ void compute_transition_probabilities(
     }
 
     if (num_B_segments == 0) {
-        cerr << "Greška: nema background segmenata!" << endl;
+        cerr << "Greška: nema kromosomskog segmenata!" << endl;
         exit(1);
     }
 

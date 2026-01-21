@@ -11,9 +11,8 @@ using namespace std;
 
 
 /**
- * Učitavanje pozitivnih CpG otoka iz FASTA fajla
- * Također parsira koordinate iz header linija
- * Rezultat: vektor sekvenci CpG otoka i popunjen vektor koordinata
+ * Učitavanje pozitivnih CpG otoka iz FASTA fajla. Također parsira koordinate iz header linija
+ * Rezultat: vektor sekvenci CpG otoka i popunjen vektor koordinata coords.
  * 
  * @param filename - ime FASTA fajla
  * @param coords - referenca na vektor za pohranu koordinata

@@ -21,13 +21,14 @@ TRAIN_SRC = \
 	./hmm/hmm.cpp \
 	./hmm/hmm_io.cpp \
 	./algorithms/baum_welch.cpp \
-	./algorithms/forward_backward.cpp
+	./algorithms/forward_backward.cpp \
+	./train_functions/train_func.cpp
 
 DECODE_SRC = \
 	./apps/decode_and_evaluation.cpp \
 	./hmm/hmm.cpp \
 	./hmm/hmm_io.cpp \
-	./algorithms/viterbij.cpp \
+	./algorithms/forward_backward.cpp \
 	./postprocesing/decoded_postprocesing.cpp \
 	./evaluation/evaluation.cpp
 

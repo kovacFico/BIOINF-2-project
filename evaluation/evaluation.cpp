@@ -1,26 +1,52 @@
 #include "./evaluation.hpp"
+#include <algorithm>  // sort
 
+void island_based_evaluation(const vector<CpgRegion>& predicted_in, const vector<CpgRegion>& truth_in) {
+    // Kopije koje možemo sortirati
+    vector<CpgRegion> predicted = predicted_in;
+    vector<CpgRegion> truth     = truth_in;
 
-void island_based_evaluation(const vector<CpgRegion>& predicted, const vector<CpgRegion>& truth) {
+    sort(predicted.begin(), predicted.end(),
+         [](const CpgRegion& a, const CpgRegion& b){ return a.start < b.start; });
+
+    sort(truth.begin(), truth.end(),
+         [](const CpgRegion& a, const CpgRegion& b){ return a.start < b.start; });
+
     int TP = 0;
+    size_t i = 0; // predicted
+    size_t j = 0; // truth
 
-    for (const auto& p : predicted) {
-        for (const auto& t : truth) {
-            int s = max(p.start, t.start);
-            int e = min(p.end, t.end);
+    // 1-na-1 matching: svaka "truth" regija se može matchati najviše jednom
+    while (i < predicted.size() && j < truth.size()) {
+        const auto& p = predicted[i];
+        const auto& t = truth[j];
 
-            if (e >= s) {
-                TP++;
-                break;
-            }
+        // ako predicted završava prije nego truth počinje -> nema šanse za overlap
+        if (p.end < t.start) {
+            i++;
+            continue;
         }
+
+        // ako truth završava prije nego predicted počinje -> ovaj truth nije pogođen
+        if (t.end < p.start) {
+            j++;
+            continue;
+        }
+
+        // inače postoji overlap -> matchamo ovaj par i pomičemo oba pointera
+        TP++;
+        i++;
+        j++;
     }
 
-    int FP = predicted.size() - TP;
-    int FN = truth.size() - TP;
+    int FP = (int)predicted.size() - TP;
+    int FN = (int)truth.size()     - TP;
 
-    double precision = TP / double(TP + FP);
-    double recall = TP / double(TP + FN);
+    double precision = 0.0;
+    double recall    = 0.0;
+
+    if (TP + FP > 0) precision = TP / double(TP + FP);
+    if (TP + FN > 0) recall    = TP / double(TP + FN);
 
     cout << "=== Island-based evaluation ===\n";
     cout << "True Positive = " << TP << "\n";
@@ -29,7 +55,6 @@ void island_based_evaluation(const vector<CpgRegion>& predicted, const vector<Cp
     cout << "Precision = " << precision << "\n";
     cout << "Recall = " << recall << "\n";
 }
-
 
 void base_pair_evaluation(const vector<CpgRegion>& predicted, const vector<CpgRegion>& truth) {
     long long pred_len = 0;

@@ -1,8 +1,12 @@
 #include "./hmm_io.hpp"
 #include "./hmm.hpp"
 
-using namespace std;
+#include <sstream>
+#include <vector>
+#include <iomanip>
+#include <cmath>
 
+using namespace std;
 
 HMM load_hmm(const string &filename) {
     ifstream in(filename);
@@ -15,29 +19,26 @@ HMM load_hmm(const string &filename) {
     string tmp;
 
     if (filename == "../output/trained_hmm_params.txt") {
-        in >> tmp >> hmm.chromosome;
+        in >> tmp >> hmm.chromosome;  
     } else {
         hmm.chromosome = 1;
     }
 
-    in >> tmp >> tmp >> tmp >> tmp >> tmp >> tmp;   
-    in >> hmm.B[0][0] >> hmm.B[0][1] >> hmm.B[0][2] >> hmm.B[0][3];
+    in >> tmp >> tmp;                
+    for (int k = 0; k < NSYM; k++)
+        in >> hmm.B[0][k];
 
-    in >> tmp >> tmp >> tmp >> tmp >> tmp >> tmp;
-    in >> hmm.B[1][0] >> hmm.B[1][1] >> hmm.B[1][2] >> hmm.B[1][3];
+    in >> tmp >> tmp;                 
+    for (int k = 0; k < NSYM; k++)
+        in >> hmm.B[1][k];
 
-    in >> tmp;
-    in >> tmp >> hmm.A[0][0];
-    in >> tmp >> hmm.A[0][1];
-    in >> tmp >> hmm.A[1][1];
-    in >> tmp >> hmm.A[1][0];
+    in >> tmp;                       
+    in >> tmp >> hmm.A[0][0];         
+    in >> tmp >> hmm.A[0][1];         
+    in >> tmp >> hmm.A[1][1];         
+    in >> tmp >> hmm.A[1][0];         
 
-    if (filename == "../output/trained_hmm_params.txt") {
-        in >> tmp >> hmm.pi[0] >> hmm.pi[1];
-    } else {
-        hmm.pi[0] = 0.9;
-        hmm.pi[1] = 0.1;
-    }
+    in >> tmp >> hmm.pi[0] >> hmm.pi[1];
 
     return hmm;
 }
@@ -45,17 +46,21 @@ HMM load_hmm(const string &filename) {
 
 void save_hmm(const HMM& hmm, const string& filename) {
     ofstream out(filename);
-    out << fixed << setprecision(8);  // format ispisa
+    out << fixed << setprecision(8);
 
-    if (filename == "../output/trained_hmm_params.txt") 
+    if (filename == "../output/trained_hmm_params.txt") {
         out << "Kromosom: " << hmm.chromosome + 1 << "\n";
-    
-    out << "Emisije B (A C G T): ";
-    for (int k = 0; k < NSYM; k++) out << hmm.B[0][k] << " ";
-    out << "\nEmisije C (A C G T): ";
-    for (int k = 0; k < NSYM; k++) out << hmm.B[1][k] << " ";
+    }
 
-    out << "\nTranzicije:\n";
+    out << "Emisije B: ";
+    for (int k = 0; k < NSYM; k++) out << hmm.B[0][k] << " ";
+    out << "\n";
+
+    out << "Emisije C: ";
+    for (int k = 0; k < NSYM; k++) out << hmm.B[1][k] << " ";
+    out << "\n";
+
+    out << "Tranzicije:\n";
     out << "B->B " << hmm.A[0][0] << "\n";
     out << "B->C " << hmm.A[0][1] << "\n";
     out << "C->C " << hmm.A[1][1] << "\n";

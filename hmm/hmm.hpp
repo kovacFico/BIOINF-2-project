@@ -1,5 +1,6 @@
 #pragma once
 
+#include <algorithm>
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -35,14 +36,15 @@ string load_background(const string &filename);
 
 
 /**
- * @brief Učitava koordinate CpG otoka iz doteteke, preskače broj kromosoma.
+ * @brief Učitava koordinate CpG otoka iz doteteke. Ako je dan broj kromosoma
+ * između [1, 22], učitava koordinate vezane za samo taj kromosom. Ako je dana 0,
+ * učitava sve koordinate genoma.
  * 
- * @param filename Ime doteteke
- * @return vector<CpgRegion> Vektor koordinata CpG otoka
+ * @param chromosome Broj kromosoma (1-22) ili 0 za sve kromosome
  * 
  * Napomena: Pretpostavlja se da je doteteka ispravno formatirana.
  */
-vector<CpgRegion> load_coords(const string &filename);
+vector<CpgRegion> load_all_or_selected_coords(int chromosome);
 
 
 /**
@@ -51,7 +53,7 @@ vector<CpgRegion> load_coords(const string &filename);
  * @param seqs Vektor CpG sekvenci
  * @param emit Niz od 4 elementa za pohranu vjerojatnosti A,C,G,T
  */
-void compute_emission_pos(const vector<string> &seqs, double emit[4]);
+void compute_emission_pos(const vector<string> &seqs, double emit[NSYM]);
 
 
 /**
@@ -60,15 +62,15 @@ void compute_emission_pos(const vector<string> &seqs, double emit[4]);
  * @param bg Sekvenca pozadinskog genoma
  * @param emit Niz od 4 elementa za pohranu vjerojatnosti A,C,G,T
  */
-void compute_emission_bg(const string &bg, double emit[4]);
+void compute_emission_bg(const string &bg, double emit[NSYM]);
 
 
 /**
- * @brief Računa prijelazne vjerojatnosti između stanja na temelju koordinata CpG otoka
- * i ukupne duljine kromosoma
+ * @brief Računa prijelazne vjerojatnosti između stanja na temelju koordinata CpG otoka 
+ * u prvom kromosomu i ukupne duljine tog kromosoma
  * 
- * @param coords Vektor koordinata CpG otoka
- * @param chromosome_length Ukupna duljina kromosoma
+ * @param coords Vektor koordinata CpG otoka u prvom kromosomu
+ * @param chromosome_length Ukupna duljina prvog kromosoma
  * @param p_BB Referenca za pohranu vjerojatnosti B->B
  * @param p_BC Referenca za pohranu vjerojatnosti B->C
  * @param p_CC Referenca za pohranu vjerojatnosti C->C

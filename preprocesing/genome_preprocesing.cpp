@@ -1,6 +1,5 @@
 #include "./genome_preprocesing.hpp"
 
-
 vector<string> load_positive_cpg(const string &filename, vector<CpgRegion> &coords) {
     ifstream file(filename);
     if (!file) {
@@ -30,8 +29,8 @@ vector<string> load_positive_cpg(const string &filename, vector<CpgRegion> &coor
                 try {
                     chromosome = stoi(line.substr(pos, colon - pos));
                 } catch (const invalid_argument &e) {
-                    // naišli smo na  zapis kromosoma koji nije 
-                    // broj X prekidamo petlju jer su ostali samo
+                    // naišli smo na zapis kromosoma koji nije 
+                    // broj; prekidamo petlju jer su ostali samo
                     // X i Y
                     continue;
                 }
@@ -121,8 +120,8 @@ string load_background(const string &filename, const vector<CpgRegion> &coords) 
                     stoi(line.substr(pos, pos + 1));
                     continue;
                 } catch (const invalid_argument &e) {
-                    // naišli smo na  zapis kromosoma koji nije 
-                    // broj X prekidamo petlju jer su ostali samo
+                    // naišli smo na zapis kromosoma koji nije 
+                    // broj; prekidamo petlju jer su ostali samo
                     // X i Y
                     break;
                 }

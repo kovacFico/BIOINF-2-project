@@ -7,7 +7,7 @@
  *
  * Funkcija izračunava početne parametre HMM-a:
  * - Emisijske vjerojatnosti za pozadinsko i CpG stanje
- *   na temelju frekvencija nukleotida.
+ *   na temelju frekvencija dinukleotida.
  * - Prijelazne vjerojatnosti između stanja
  *   na temelju poznatih CpG koordinata i duljine genoma.
  *
@@ -20,15 +20,20 @@
 int main() {
     vector<string> cpg = load_sequences("../output/clean_positive.txt");
     string background = load_background("../output/clean_background.txt");
-    vector<CpgRegion> coords = load_coords("../output/coords.txt");
+    vector<CpgRegion> coords = load_all_or_selected_coords(1);
 
     HMM hmm;
+    double BB, BC, CC, CB;
 
     compute_emission_pos(cpg, hmm.B[1]);      
     compute_emission_bg(background, hmm.B[0]); 
 
-    double BB, BC, CC, CB;
-    compute_transition_probabilities(coords, background.size(), BB, BC, CC, CB);
+    ifstream in("../output/1_train_chr.txt");
+    string chr_seq;
+    getline(in, chr_seq);
+    // radi bolje preciznosti tranzicije računamo preko relativnog odnosa CpG otoka
+    // u prvom kromosomu i ostatka genoma prvog kromosoma umjesto cijelog genoma
+    compute_transition_probabilities(coords, chr_seq.length(), BB, BC, CC, CB);
 
     hmm.A[0][0] = BB;
     hmm.A[0][1] = BC;
