@@ -1,26 +1,86 @@
 #include "./decoded_postprocesing.hpp"
 
-// Pretvori binarnu sekvencu stanja (0/1 po dinukleotidu) u CpG intervale u baznim koordinatama.
+
+void keep_and_clip(vector<CpgRegion>& islands, int keep_start_bp, int keep_end_bp) {
+    vector<CpgRegion> out;
+    out.reserve(islands.size());
+
+    for (const auto r : islands) {
+        int s = max(r.start, keep_start_bp);
+        int e = min(r.end, keep_end_bp);
+        if (e >= s) out.push_back({s, e, r.chromosome});
+    }
+
+    islands.swap(out);
+}
+
+
+void trim_islands_with_posterior(
+    vector<CpgRegion>& islands,
+    const vector<double>& posterior_c,
+    int base_shift,
+    double trim_th
+) {
+    vector<CpgRegion> trimmed;
+    trimmed.reserve(islands.size());
+
+    const int max_d = static_cast<int>(posterior_c.size());
+
+    for (const auto& r : islands) {
+        int d_start = max(1, r.start - base_shift);
+        int d_end   = min(max_d, r.end - base_shift - 1);
+
+        // Trim strana dok je posterior ispod praga
+        while (d_start <= d_end && posterior_c[d_start - 1] < trim_th) d_start++;
+        while (d_end >= d_start && posterior_c[d_end - 1] < trim_th) d_end--;
+
+        if (d_start <= d_end) {
+            trimmed.push_back({
+                d_start + base_shift, 
+                d_end + 1 + base_shift, 
+                r.chromosome
+            });
+        }
+    }
+
+    islands.swap(trimmed);
+}
+
+
+void load_chr_seq_to_dinuc_vector(vector<int>& O, string& s, int chr_number) {
+    ifstream in("../output/" + to_string(chr_number) + "_test_chr.txt");
+    if (!in) {
+        cerr << "Ne mogu otvoriti test fajl za kromosom " << chr_number << "\n";
+        exit(1);
+    }
+    getline(in, s);
+
+    O.reserve(s.size() - 1);
+    for (size_t i = 1; i < s.size(); i++) {
+        int x = di_index(s[i - 1], s[i]);
+        if (x != -1) O.push_back(x);
+    }
+}
+
+
 void extract_cpg_islands(vector<CpgRegion>& islands, vector<int>& states) {
-    int start_d = -1; // start u dinukleotid indeksima (1-based)
+    int start_d = -1;
 
     for (int i = 0; i < (int)states.size(); i++) {
         if (states[i] == 1 && start_d == -1) start_d = i + 1;
 
         if ((states[i] == 0 || i == (int)states.size() - 1) && start_d != -1) {
             int end_d = (states[i] == 0) ? i : i + 1; // dinukleotid end (1-based)
-
-            // MAPIRANJE: dinukleotid [start_d, end_d] pokriva baze [start_d, end_d+1]
             int start_bp = start_d;
             int end_bp = end_d + 1;
 
-            islands.push_back({start_bp, end_bp, 0}); // chr nije bitan ovdje
+            islands.push_back({start_bp, end_bp, 0});
             start_d = -1;
         }
     }
 }
 
-// Vrati predikcije iz uppercase-only sekvence natrag u originalne koordinate dodavanjem lowercase offseta.
+
 void move_predicted_based_on_lowercase(vector<CpgRegion>& predicted, int chr_number) {
     vector<CpgRegion> lowercaseCoords;
     ifstream in("../output/" + to_string(chr_number) + "_test_chr.txt");
@@ -52,7 +112,7 @@ void move_predicted_based_on_lowercase(vector<CpgRegion>& predicted, int chr_num
     }
 }
 
-// Spoji bliske CpG otoke i odbaci prekratke.
+
 void filter_lenght_and_merge_close_islands(vector<CpgRegion>& islands) {
     if (islands.empty()) return;
 
@@ -81,7 +141,7 @@ void filter_lenght_and_merge_close_islands(vector<CpgRegion>& islands) {
     }
 }
 
-// Biološki filter: zadrži islands koji zadovoljavaju GC content i CpG O/E pragove.
+
 void filter_by_content(const string& sequence, vector<CpgRegion>& islands) {
     if (islands.empty()) return;
 
@@ -119,17 +179,6 @@ void filter_by_content(const string& sequence, vector<CpgRegion>& islands) {
     }
 
     islands.swap(filtered);
-}
-
-void load_true_islands(vector<CpgRegion>& islands, int chr_number) {
-    ifstream in("../output/coords.txt");
-    int chr, start, end;
-
-    while (in >> chr >> start >> end) {
-        if (chr == chr_number) {
-            islands.push_back({start, end});
-        }
-    } 
 }
 
 

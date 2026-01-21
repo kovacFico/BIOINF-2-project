@@ -29,7 +29,7 @@ double forward_scaled(
 
 
 /**
- * @brief Forward algoritam sa skaliranjem uz masku dozvoljenih stanja po vremenu.
+ * @brief Forward algoritam sa skaliranjem uz masku dozvoljenih stanja po t.
  *
  * @param O Sekvenca opažanja
  * @param hmm HMM parametri
@@ -65,7 +65,7 @@ void backward_scaled(
 );
 
 /**
- * @brief Backward algoritam sa skaliranjem uz masku dozvoljenih stanja po vremenu.
+ * @brief Backward algoritam sa skaliranjem uz masku dozvoljenih stanja po t.
  *
  * @param O Niz opažanja
  * @param hmm HMM parametri

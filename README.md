@@ -23,6 +23,7 @@ Projekt je izrađen u sklopu kolegija **Bioinformatika 2**.
 │ ├── algorithms/
 │ │ ├── baum_welch.cpp
 │ │ ├── forward_backward.cpp
+│ │ ├── decode.cpp
 │ │
 │ ├── apps/
 │ │ ├── preprocess.cpp
@@ -43,11 +44,16 @@ Projekt je izrađen u sklopu kolegija **Bioinformatika 2**.
 │ ├── preprocesing/
 │ │ ├── genome_preprocesing.cpp
 │ │
+│ ├── train_functions/
+│ │ ├── train_func.cpp
 │
 ├── include/
 | ├── hmm/
 | ├── evaluation/
 | ├── algorithms/
+| ├── postprocesing/
+| ├── preprocesing/
+| ├── train_functions/
 | └── utils/
 |
 ├── data/

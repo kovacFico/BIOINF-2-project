@@ -28,6 +28,7 @@ DECODE_SRC = \
 	./apps/decode_and_evaluation.cpp \
 	./hmm/hmm.cpp \
 	./hmm/hmm_io.cpp \
+	./algorithms/decode.cpp \
 	./algorithms/forward_backward.cpp \
 	./postprocesing/decoded_postprocesing.cpp \
 	./evaluation/evaluation.cpp

@@ -1,6 +1,5 @@
-#include <cmath>
-
 #include "./baum_welch.hpp"
+
 
 double baum_welch_iteration_multi_masked(
     const vector<vector<int>>& sequences,
