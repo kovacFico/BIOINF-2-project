@@ -4,7 +4,29 @@
 #include "../train_functions/train_func.hpp"
 #include "../algorithms/baum_welch.hpp"
 
-
+/**
+ * @brief Treniranje skrivenog Markovljevog modela (HMM) za CpG detekciju
+ *        pomoću semi-superviziranog Baum–Welch algoritma.
+ *
+ * Program učitava inicijalne ili prethodno trenirane HMM parametre
+ * te sekvencu kromosoma za treniranje. Referentne CpG anotacije
+ * koriste se za izgradnju maski dozvoljenih stanja, čime se omogućuje
+ * semi-supervizirano učenje.
+ *
+ * Trening se provodi:
+ *  - segmentiranjem sekvence u više kraćih trening sekvenci
+ *  - izgradnjom maski koje ograničavaju dopuštena stanja HMM-a
+ *  - iterativnim Baum–Welch optimiranjem s maskama
+ *
+ * Iteracije se prekidaju pri konvergenciji log-vjerojatnosti ili
+ * nakon fiksnog broja koraka.
+ *
+ * Rezultat je ažurirani skup HMM parametara koji se spremaju na disk
+ * i koriste za kasnije dekodiranje CpG otoka.
+ *
+ * @note Trening koristi komprimiranu sekvencu bez lowercase regija.
+ * @note Koordinate referentnih CpG otoka mapiraju se na komprimirani prostor.
+ */
 int main() {
     HMM hmm;
 

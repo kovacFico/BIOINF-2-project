@@ -1,8 +1,7 @@
 #include "./evaluation.hpp"
-#include <algorithm>  // sort
+
 
 void island_based_evaluation(const vector<CpgRegion>& predicted_in, const vector<CpgRegion>& truth_in) {
-    // Kopije koje možemo sortirati
     vector<CpgRegion> predicted = predicted_in;
     vector<CpgRegion> truth     = truth_in;
 
@@ -16,24 +15,20 @@ void island_based_evaluation(const vector<CpgRegion>& predicted_in, const vector
     size_t i = 0; // predicted
     size_t j = 0; // truth
 
-    // 1-na-1 matching: svaka "truth" regija se može matchati najviše jednom
     while (i < predicted.size() && j < truth.size()) {
         const auto& p = predicted[i];
         const auto& t = truth[j];
 
-        // ako predicted završava prije nego truth počinje -> nema šanse za overlap
         if (p.end < t.start) {
             i++;
             continue;
         }
 
-        // ako truth završava prije nego predicted počinje -> ovaj truth nije pogođen
         if (t.end < p.start) {
             j++;
             continue;
         }
 
-        // inače postoji overlap -> matchamo ovaj par i pomičemo oba pointera
         TP++;
         i++;
         j++;
@@ -55,6 +50,7 @@ void island_based_evaluation(const vector<CpgRegion>& predicted_in, const vector
     cout << "Precision = " << precision << "\n";
     cout << "Recall = " << recall << "\n";
 }
+
 
 void base_pair_evaluation(const vector<CpgRegion>& predicted, const vector<CpgRegion>& truth) {
     long long pred_len = 0;

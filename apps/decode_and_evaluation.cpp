@@ -14,7 +14,31 @@ const double POST_ENTER = 0.60;
 const double POST_EXIT = 0.40;
 const double POST_TRIM = 0.42;
 
-
+/* 
+ * @brief Predikcija CpG otoka pomoću treniranog HMM-a uz prozorsku obradu
+ *        cijelog kromosoma i evaluaciju rezultata.
+ *
+ * Program učitava trenirani skriveni Markovljev model (HMM) i sekvencu
+ * odabranog kromosoma, pretvara baznu sekvencu u dinukleotidna opažanja
+ * te provodi dekodiranje u preklapajućim prozorima.
+ *
+ * Za svaki prozor:
+ *  - računa se posterior CpG stanja (forward-backward)
+ *  - provodi se dekodiranje s histerezom
+ *  - ekstrahiraju se CpG otoci
+ *  - uklanjaju se rubni artefakti i provodi sadržajno filtriranje
+ *
+ * Predviđeni CpG otoci se zatim:
+ *  - korigiraju prema lowercase regijama
+ *  - uspoređuju s referentnim anotacijama
+ *  - evaluiraju na razini otoka i baznih parova
+ *
+ * Parametri prozora (veličina, preklapanje) i pragovi posteriora
+ * definirani su kao globalne konstante.
+ *
+ * @note Koordinate CpG otoka su izražene u 1-based baznim koordinatama.
+ * @note Dinukleotidni indeksi su 0-based.
+ */
 int main() {
     HMM hmm = load_hmm("../output/trained_hmm_params.txt");
     if (hmm.chromosome < 17) hmm.chromosome = 17;
